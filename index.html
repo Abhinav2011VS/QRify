@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.png">
+    <title>QRify</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.png">
 </head>
 <body>
     <div class="container">
+        <h1>QRify</h1>
         <h1>QR Code Generator</h1>
         <input type="text" id="qrInput" placeholder="Enter text or URL" />
         <button onclick="generateQRCode()">Generate QR Code</button>
@@ -23,8 +24,10 @@
             <button id="copyButton" onclick="copyQRCode()">Copy QR Code</button>
             <button id="downloadButton" onclick="downloadQRCode()">Download QR Code</button>
         </div>
+
+        <a href="/downloads" class="download-link">Go to Downloads</a>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
