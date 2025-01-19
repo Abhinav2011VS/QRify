@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <input type="text" id="qrInput" placeholder="Enter text or URL" />
+        <button onclick="generateQRCode()">Generate QR Code</button>
+
+        <!-- Loading spinner will be displayed while the QR code is being generated -->
+        <div id="loadingSpinner" class="spinner"></div>
+        
+        <div id="qrCodeContainer" class="qrCodeContainer"></div>
+
+        <!-- Action buttons that show after the QR code is generated -->
+        <div id="actionButtons" class="actionButtons">
+            <button id="copyButton" onclick="copyQRCode()">Copy QR Code</button>
+            <button id="downloadButton" onclick="downloadQRCode()">Download QR Code</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
