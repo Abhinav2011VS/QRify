@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Downloads</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Download Qrify</h1>
+        <div class="download-links">
+            <a id="linux-appimage-link" class="download-link" data-platform="linux/appimage">Linux - AppImage</a>
+            <a id="linux-deb-link" class="download-link" data-platform="linux/deb">Linux - deb</a>
+            <a id="windows-link" class="download-link" data-platform="windows">Windows</a>
+            <a id="windows-lite-link" class="download-link" onclick="window.location.href='/downloads/QRify-Installer-Lite.exe';">Windows Lite</a>
+            <a id="mac-x64-link" class="download-link" data-platform="mac/x64">Mac x64</a>
+            <a id="mac-arm64-link" class="download-link" data-platform="mac/arm64">Mac ARM64</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        // GitHub repository details
+        const repoOwner = 'Abhinav2011VS';  // GitHub username
+        const repoName = 'QRify-App'; // Repository name
+        const releasesUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`; // API URL for latest release
+
+        // Fetch latest release data from GitHub API
+        fetch(releasesUrl)
+            .then(response => response.json())
+            .then(data => {
+                const assets = data.assets;
+
+                // Find relevant download links based on asset names
+                const linuxAppImageLink = assets.find(asset => asset.name.endsWith('.AppImage'));
+                const linuxDebLink = assets.find(asset => asset.name.endsWith('.deb'));
+                const windowsLink = assets.find(asset => asset.name.endsWith('.exe'));
+                const macX64Link = assets.find(asset => asset.name.endsWith('x64.dmg'));
+                const macArm64Link = assets.find(asset => asset.name.endsWith('arm64.dmg'));
+
+                // Update download links if available
+                if (linuxAppImageLink) document.getElementById('linux-appimage-link').href = linuxAppImageLink.browser_download_url;
+                if (linuxAppImageLink) document.getElementById('linux-deb-link').href = linuxDebLink.browser_download_url;
+                if (windowsLink) document.getElementById('windows-link').href = windowsLink.browser_download_url;
+                if (macX64Link) document.getElementById('mac-x64-link').href = macX64Link.browser_download_url;
+                if (macArm64Link) document.getElementById('mac-arm64-link').href = macArm64Link.browser_download_url;
+            })
+            .catch(error => {
+                console.error('Error fetching release data:', error);
+            });
+
+        // GSAP animation for navbar links
+        gsap.from(".nav-link", { duration: 1, opacity: 0, y: -50, stagger: 0.2 });
+    </script>
+</body>
+</html>
